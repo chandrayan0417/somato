@@ -1,0 +1,17 @@
+@import url("https://fonts.googleapis.com/css2?family=Arizonia&family=Griffy&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Delius&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Amarante&display=swap");
+@import "tailwindcss";
+@import "remixicon/fonts/remixicon.css";
+html,
+body,
+#root {
+  height: 100%;
+  width: 100%;
+}
+
+@theme {
+  --font-griffy: "Griffy", sans-serif;
+  --font-delius: "Delius";
+  --font-amarante: "Amarante";
+}
