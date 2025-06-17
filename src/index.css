@@ -6,12 +6,21 @@
 html,
 body,
 #root {
-  height: 100%;
-  width: 100%;
+	height: 100%;
+	width: 100%;
 }
 
 @theme {
-  --font-griffy: "Griffy", sans-serif;
-  --font-delius: "Delius";
-  --font-amarante: "Amarante";
+	--font-griffy: "Griffy", sans-serif;
+	--font-delius: "Delius";
+	--font-amarante: "Amarante";
+}
+
+/* Tailwind custom utility */
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }

@@ -1,34 +1,32 @@
 {
-  "name": "somato",
-  "private": true,
-  "version": "0.0.0",
-  "type": "module",
-  "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "lint": "eslint .",
-    "preview": "vite preview"
-  },
-  "dependencies": {
-    "@tailwindcss/vite": "^4.1.10",
-    "nanoid": "^5.1.5",
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0",
-    "react-hook-form": "^7.57.0",
-    "react-router-dom": "^7.6.2",
-    "remixicon": "^4.6.0",
-    "tailwindcss": "^4.1.10"
-  },
-  "devDependencies": {
-    "@eslint/js": "^9.28.0",
-    "@types/react": "^19.1.2",
-    "@types/react-dom": "^19.1.2",
-    "@vitejs/plugin-react": "^4.4.1",
-    "eslint": "^9.28.0",
-    "eslint-plugin-react": "^7.37.5",
-    "eslint-plugin-react-hooks": "^5.2.0",
-    "eslint-plugin-react-refresh": "^0.4.19",
-    "globals": "^16.2.0",
-    "vite": "^6.3.5"
-  }
+	"name": "somato",
+	"private": true,
+	"version": "0.0.0",
+	"type": "module",
+	"scripts": {
+		"dev": "vite",
+		"build": "vite build",
+		"format": "biome check --apply .",
+		"lint": "biome lint .",
+		"preview": "vite preview"
+	},
+	"dependencies": {
+		"@tailwindcss/vite": "^4.1.10",
+		"nanoid": "^5.1.5",
+		"react": "^19.1.0",
+		"react-dom": "^19.1.0",
+		"react-hook-form": "^7.57.0",
+		"react-router-dom": "^7.6.2",
+		"react-toastify": "^11.0.5",
+		"remixicon": "^4.6.0",
+		"tailwindcss": "^4.1.10"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "^1.9.4",
+		"@types/react": "^19.1.2",
+		"@types/react-dom": "^19.1.2",
+		"@vitejs/plugin-react": "^4.4.1",
+		"globals": "^16.2.0",
+		"vite": "^6.3.5"
+	}
 }
