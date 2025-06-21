@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Arizonia&family=Griffy&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Delius&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Amarante&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
 @import "tailwindcss";
 @import "remixicon/fonts/remixicon.css";
 html,
@@ -14,13 +15,14 @@ body,
 	--font-griffy: "Griffy", sans-serif;
 	--font-delius: "Delius";
 	--font-amarante: "Amarante";
+	--font-open-sans: "Open Sans", sans-serif;
 }
 
 /* Tailwind custom utility */
 .scrollbar-none::-webkit-scrollbar {
-  display: none;
+	display: none;
 }
 .scrollbar-none {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+	-ms-overflow-style: none;
+	scrollbar-width: none;
 }

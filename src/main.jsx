@@ -6,7 +6,7 @@ import App from "./App.jsx";
 import Context from "./components/Context.jsx";
 
 createRoot(document.getElementById("root")).render(
-	<BrowserRouter>
+	<BrowserRouter basename="/somato">
 		<Context>
 			<App />
 		</Context>

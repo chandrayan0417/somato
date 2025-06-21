@@ -10,7 +10,6 @@
 		"ignore": []
 	},
 	"formatter": {
-		"lineWidth": 100,
 		"enabled": true,
 		"indentStyle": "tab"
 	},
@@ -20,10 +19,7 @@
 	"linter": {
 		"enabled": true,
 		"rules": {
-			"recommended": true,
-			"style": {
-				"useSelfClosingElements": "warn"
-			}
+			"recommended": true
 		}
 	},
 	"javascript": {

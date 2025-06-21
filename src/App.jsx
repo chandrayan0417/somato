@@ -1,3 +1,4 @@
+import { ToastContainer } from "react-toastify";
 import Navbar from "./components/Navbar";
 import Roueter from "./components/Router";
 const App = () => {
@@ -5,6 +6,7 @@ const App = () => {
 		<div className="w-full h-full overflow-auto scrollbar-none">
 			<Navbar />
 			<Roueter />
+			<ToastContainer position="bottom-right" closeOnClick />
 		</div>
 	);
 };

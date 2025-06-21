@@ -45,7 +45,7 @@ const Navbar = () => {
 						}
 						to="cart"
 					>
-						<i className=" ri-shopping-cart-2-fill"></i>
+						<i className=" ri-shopping-cart-2-fill" />
 					</NavLink>
 				</div>
 			</div>{" "}

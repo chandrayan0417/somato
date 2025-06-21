@@ -24,9 +24,13 @@ const Home = () => {
 					<p>
 						© <span>{new Date().getFullYear()}</span> Somato IN
 					</p>
-					<a href="https://github.com/chandrayan0417" target="_blank" rel="noopener noreferrer">
-						<i className="ri-github-fill"></i> chandrayan0417
-						<i className="ri-external-link-line"></i>
+					<a
+						href="https://github.com/chandrayan0417"
+						target="_blank"
+						rel="noopener noreferrer"
+					>
+						<i className="ri-github-fill" /> chandrayan0417
+						<i className="ri-external-link-line" />
 					</a>
 				</footer>
 			</div>
