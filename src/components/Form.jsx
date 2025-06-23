@@ -19,6 +19,7 @@ const Form = () => {
 	function submitHandler(data) {
 		data.id = nanoid();
 		data.quantity = 1;
+		data.isAvailable = true;
 		const updatedItems = [...items, data];
 
 		setItems(updatedItems);
@@ -92,7 +93,7 @@ const Form = () => {
 					{...register("imageLink")}
 					className=" focus:border-[#F72E41] border-2 border-zinc-100 p-2 rounded-md focus:outline-hidden text-xl focus:bg-zinc-50 mt-2"
 					id="image"
-					type="text"
+					type="url"
 					placeholder="image link"
 					name="imageLink"
 				/>
@@ -106,11 +107,12 @@ const Form = () => {
 						required: "price can not be empty",
 						validate: (value) => value > 0 || "invalid input",
 					})}
-					className=" focus:border-[#F72E41] border-2 border-zinc-100 p-2 rounded-md focus:outline-hidden text-xl focus:bg-zinc-50 mt-2"
+					className=" focus:border-[#F72E41] border-2 border-zinc-100 p-2 rounded-md focus:outline-hidden text-xl focus:bg-zinc-50 mt-2 no-spinner"
 					id="price"
 					type="number"
 					placeholder="price"
 					name="price"
+					min="1"
 				/>
 				{errors?.price?.message && (
 					<small className="text-red-500 mt-2 text-sm">
@@ -157,7 +159,7 @@ const Form = () => {
 				)}
 			</div>
 			<button
-				className="font-open-sans  text-white py-2 px-15 bg-[#F72E41] hover:bg-red-400 rounded-lg transition-colors duration-200 cursor-pointer mt-5"
+				className="font-open-sans  text-white py-2 px-15 bg-[#F72E41] hover:bg-red-600 rounded-lg transition-colors duration-200 cursor-pointer mt-5"
 				type="submit"
 			>
 				Add Item <i className="ri-menu-add-line" />

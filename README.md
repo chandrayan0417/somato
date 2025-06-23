@@ -34,4 +34,7 @@ npm run dev
 
 ## 📸 Preview
 
-![App Preview](./public/screencapture-localhost-5173-2025-06-17-14_05_41.png)
+![Home Preview](./public/home_page.png)
+![Menu Preview](./public/menu_page.png)
+![List item Preview](./public/listitem_page.png)
+![Cart Preview](./public/cart_page.png)

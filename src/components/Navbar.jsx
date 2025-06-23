@@ -48,7 +48,7 @@ const Navbar = () => {
 						<i className=" ri-shopping-cart-2-fill" />
 					</NavLink>
 				</div>
-			</div>{" "}
+			</div>
 		</div>
 	);
 };

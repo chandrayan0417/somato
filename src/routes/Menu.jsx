@@ -30,7 +30,7 @@ const Menu = () => {
 						className="h-108 w-89 border border-gray-100 hover:shadow-lg rounded-xl transition-shadow duration-200 cursor-default font-open-sans"
 					>
 						<div
-							className="h-[45%] bg-cover bg-center rounded-t-xl flex justify-end items-start"
+							className={`h-[45%] bg-cover bg-center rounded-t-xl flex justify-end items-start filter ${item.isAvailable ? "saturate-100" : "saturate-0"}`}
 							style={{
 								backgroundImage: `url(${hasImage ? item.imageLink : fallbackImage})`,
 							}}
@@ -50,24 +50,28 @@ const Menu = () => {
 							<p className="font-light">{item.description}</p>
 							<div className="flex justify-between mt-auto ">
 								<button
-									className=" w-[47%] py-2  text-white bg-red-400 hover:bg-red-500 rounded-lg cursor-pointer font-semibold"
+									className={` w-[47%] py-2 bg-[#F72E41] text-white   hover:bg-red-600 rounded-lg cursor-pointer font-semibold ${item.isAvailable ? "" : "hidden"}`}
 									type="button"
 								>
 									Order Now
 								</button>
 								<button
 									onClick={() => addToCartHandler(item.id)}
-									className=" w-[47%] py-2  text-white bg-orange-500 hover:bg-yellow-500 rounded-lg cursor-pointer font-semibold"
+									className={`w-[47%] py-2  text-white bg-orange-500 hover:bg-yellow-500 rounded-lg cursor-pointer font-semibold ${item.isAvailable ? "" : "hidden"}`}
 									type="button"
 								>
 									Add To Cart
 								</button>
+								<span
+									className={`w-full py-2 text-center text-white bg-red-500 rounded-lg font-semibold ${item.isAvailable ? "hidden" : ""}`}
+								>
+									Not Available
+								</span>
 							</div>
 						</div>
 					</div>
 				);
 			})}
-			<ToastContainer position="bottom-right" closeOnClick />
 		</div>
 	);
 };

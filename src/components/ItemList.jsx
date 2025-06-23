@@ -1,9 +1,10 @@
 import { useContext } from "react";
 import { toast } from "react-toastify";
-import { itemContext } from "./Context";
+import { cartContext, itemContext } from "./Context";
 
 const ItemList = () => {
 	const [items, setItems] = useContext(itemContext);
+	const [cart, setCart] = useContext(cartContext);
 
 	const deleteHandler = (id) => {
 		const updatedItems = items.filter((item) => item.id !== id);
@@ -23,7 +24,25 @@ const ItemList = () => {
 			</div>,
 		);
 	};
+	const isAvailableHandler = (id) => {
+		const updatedCart = cart.map((item) =>
+			item.id === id
+				? {
+						...item,
+						isAvailable: !item.isAvailable,
+						quantity: !item.isAvailable ? 0 : item.quantity,
+					}
+				: item,
+		);
 
+		const updatedItems = items.map((item) =>
+			item.id === id ? { ...item, isAvailable: !item.isAvailable } : item,
+		);
+		setItems(updatedItems);
+		setCart(updatedCart);
+		localStorage.setItem("itemList", JSON.stringify(updatedItems));
+		localStorage.setItem("cart", JSON.stringify(updatedCart));
+	};
 	const undoHandler = (item) => {
 		setItems((prev) => {
 			const updated = [...prev, item];
@@ -45,13 +64,20 @@ const ItemList = () => {
 						className="h-100 w-70 border border-gray-100 hover:shadow-lg rounded-xl transition-shadow duration-200 font-open-sans"
 					>
 						<div
-							className="h-[40%] bg-cover bg-center rounded-t-xl flex justify-end items-start"
+							className="h-[40%] bg-cover p-2 gap-1 bg-center rounded-t-xl flex flex-col justify-start items-end"
 							style={{
 								backgroundImage: `url(${hasImage ? item.imageLink : fallbackImage})`,
 							}}
 						>
 							<button
-								className="bg-white m-2 px-2 py-1 rounded-md hover:bg-red-400 hover:text-white hover:scale-102 transition-all duration-200 cursor-pointer"
+								className={`px-2 py-1 rounded-md text-white  transition-all duration-200 cursor-pointer ${item.isAvailable ? "bg-red-500" : "bg-green-600"}`}
+								type="button"
+								onClick={() => isAvailableHandler(item.id)}
+							>
+								{item.isAvailable ? "Not Available" : "Available"}
+							</button>
+							<button
+								className="bg-white   px-2 py-1 rounded-md hover:bg-red-400 hover:text-white transition-all duration-200 cursor-pointer"
 								type="button"
 								onClick={() => deleteHandler(item.id)}
 							>
