@@ -1,6 +1,8 @@
+import { nanoid } from "nanoid";
 import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 import { bookingContext } from "../components/Context";
 const Home = () => {
 	const [hideHeading, setHideHeading] = useState(false);
@@ -21,8 +23,12 @@ const Home = () => {
 		}
 	};
 	const submitHandler = (data) => {
-		setBooking([...booking, data]);
-    
+		data.id = nanoid();
+		const updateBooking = [...booking, data];
+		setBooking(updateBooking);
+		localStorage.setItem("booking", JSON.stringify(updateBooking));
+		toast.success("Booking Successful");
+		setTimeout(() => bookHandler(), 3000);
 	};
 
 	const bookHandler = () => {
@@ -37,7 +43,7 @@ const Home = () => {
 					it's not just Food, It's an Experience.
 				</div>
 				<form
-					onSubmit={handleSubmit()}
+					onSubmit={handleSubmit(submitHandler)}
 					className={`flex flex-col gap-2 h-fit w-180 min-h-110 bg-zinc-100  border border-zinc-200 rounded-xl shadow-md my-15 p-5 ${!hideHeading ? "hidden" : ""}`}
 				>
 					<div className="flex flex-col">
@@ -95,19 +101,18 @@ const Home = () => {
 							Email Address
 						</label>
 						<input
-							className="w-90 bg-zinc-50 rounded-md focus:outline-hidden text-xl focus:bg-white p-2 mt-1 no-spinner"
+							className="w-90 bg-zinc-50 rounded-md focus:outline-hidden text-xl focus:bg-white p-2 mt-1"
 							{...register("emailid", {
-								required: "email address can not be empty",
-								validate: (value) =>
-									value.trim() !== "" || "emailid cannot be just whitespace",
+								required: "Email address cannot be empty",
+								pattern: {
+									value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+									message: "Invalid email format",
+								},
 							})}
 							id="emailid"
 							placeholder="example@abc.com"
-							name="emailid"
 							type="email"
-							value={input}
 						/>
-
 						{errors?.emailid?.message && (
 							<small className="text-red-500 mt-2 text-sm">
 								<i className="ri-error-warning-line" /> {errors.emailid.message}
@@ -121,7 +126,7 @@ const Home = () => {
 									Select Check-In Time
 								</label>
 								<input
-									className="w-40 bg-zinc-50 rounded-md focus:outline-none text-xl focus:bg-white p-2 mt-1 no-spinner"
+									className="w-40 bg-zinc-50 rounded-md focus:outline-none text-xl focus:bg-white p-2 mt-1 "
 									{...register("checkin", {
 										required: "Please select a check-in time",
 										validate: (value) => {
@@ -141,7 +146,7 @@ const Home = () => {
 									Select Check-Out Time
 								</label>
 								<input
-									className="w-40 bg-zinc-50 rounded-md focus:outline-none text-xl focus:bg-white p-2 mt-1 no-spinner"
+									className="w-40 bg-zinc-50 rounded-md focus:outline-none text-xl focus:bg-white p-2 mt-1 "
 									{...register("checkout", {
 										required: "Please select a check-out time",
 										validate: (value) => {
@@ -174,7 +179,7 @@ const Home = () => {
 								Select Date
 							</label>
 							<input
-								className="w-45 bg-zinc-50 rounded-md focus:outline-none text-xl focus:bg-white p-2 mt-1 no-spinner"
+								className="w-45 bg-zinc-50 rounded-md focus:outline-none text-xl focus:bg-white p-2 mt-1 "
 								{...register("date", {
 									required: "Please select a booking date",
 									validate: (value) => {
@@ -208,7 +213,7 @@ const Home = () => {
 							className="font-open-sans  h-fit text-white py-2 px-15 bg-[#F72E41] hover:bg-red-600 rounded-lg transition-colors duration-200 cursor-pointer "
 							type="submit"
 						>
-							Add Item <i className="ri-menu-add-line" />
+							Confirm
 						</button>
 					</div>{" "}
 				</form>

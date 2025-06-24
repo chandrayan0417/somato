@@ -11,6 +11,11 @@ const ItemList = () => {
 		const currentItem = items.find((item) => item.id === id);
 		setItems(updatedItems);
 		localStorage.setItem("itemList", JSON.stringify(updatedItems));
+		const updatedCart = cart.filter((item) => item.id !== id);
+		const currentCart = cart.find((item) => item.id === id);
+		setCart(updatedCart);
+		localStorage.setItem("cart", JSON.stringify(updatedCart));
+
 		toast.error(
 			<div>
 				{currentItem.title}

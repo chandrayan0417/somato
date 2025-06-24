@@ -10,8 +10,9 @@ const Cart = () => {
 	const [cart, setCart] = useContext(cartContext);
 
 	useEffect(() => {
-		const parseCart = JSON.parse(localStorage.getItem("cart"));
-		parseCart && setCart(parseCart);
+		const parseCart = JSON.parse(localStorage.getItem("cart")) || [];
+		const availableItems = parseCart.filter((item) => item.isAvailable);
+		availableItems && setCart(availableItems);
 	}, [setCart]);
 
 	let subTotal = 0;
@@ -79,7 +80,7 @@ const Cart = () => {
 							<div className="flex  w-3/5 justify-between py-3 pl-3">
 								<div className="flex gap-3">
 									<div
-										className={`h-15 w-15 bg-cover bg-center rounded-sm filter ${item.isAvailable ? "saturate-100" : "saturate-25"}`}
+										className={"h-15 w-15 bg-cover bg-center rounded-sm "}
 										style={{
 											backgroundImage: `url(${item.imageLink})`,
 										}}
@@ -149,8 +150,9 @@ const Cart = () => {
 					</div>
 					<div className="flex justify-between border-t-2 border-zinc-100 pt-1">
 						<strong>Total</strong>
-
-						<strong>₹ {(subTotal > 0 ? tax + subTotal + handlingFee : 0).toFixed(2)}</strong>
+						<strong>
+							₹ {(subTotal > 0 ? tax + subTotal + handlingFee : 0).toFixed(2)}
+						</strong>
 					</div>
 				</div>
 				<button

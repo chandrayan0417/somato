@@ -1,12 +1,11 @@
 import { Route, Routes } from "react-router-dom";
-
 import Cart from "../routes/Cart";
 import Home from "../routes/Home";
 import Listitem from "../routes/Listitem";
 import Menu from "../routes/Menu";
 import PageNotFound from "./PageNotFound";
 
-const Roueter = () => {
+const Router = () => {
 	return (
 		<Routes>
 			<Route path="/" element={<Home />} />
@@ -18,4 +17,4 @@ const Roueter = () => {
 	);
 };
 
-export default Roueter;
+export default Router;
