@@ -36,7 +36,7 @@ const Home = () => {
 	};
 	return (
 		<div className=" px-30 flex justify-between pt-15">
-			<div className=" w-3/5 z-50">
+			<div className=" w-3/5 z-10">
 				<div
 					className={`font-amarante h-140 text-9xl/37 py-15 cursor-default text-shadow-md ${hideHeading ? "hidden" : ""}`}
 				>
@@ -228,7 +228,7 @@ const Home = () => {
 					<button
 						type="button"
 						onClick={bookHandler}
-						className="py-2 px-7 w-38 rounded-full transition delay-75 ease-in-out duration-200 bg-zinc-200    hover:bg-zinc-300"
+						className="py-2 px-7 w-38 rounded-full transition delay-75 ease-in-out duration-200 bg-zinc-200    hover:bg-zinc-300 hover:cursor-pointer"
 					>
 						{hideHeading ? "Go Back" : "Book A Table"}
 					</button>

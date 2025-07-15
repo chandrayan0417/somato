@@ -59,14 +59,14 @@ const Cart = () => {
 	return cart.length === 0 ? (
 		<EmptyCart />
 	) : (
-		<div className="mx-30  flex text-xl font-nanum-myeongjo font-light ">
-			<div className="  w-2/3 p-5">
-				<div className="flex w-full mb-5 sticky top-16 z-50">
+		<div className="lg:mx-30  lg:flex px-3 pb-3 md:px-15 lg:text-xl font-nanum-myeongjo font-light ">
+			<div className="  lg:w-2/3 mb-5">
+				<div className="lg:flex w-full mb-5 sticky top-16 z-50  hidden">
 					<div className="flex w-3/5 justify-between px-5">
 						<h1>Item Details </h1>
 						<h1>Quantity</h1>
 					</div>
-					<div className="flex w-2/5 justify-around pr-20">
+					<div className="flex w-2/5 justify-around lg:pr-20">
 						<h1>Price</h1>
 						<h1>Total</h1>
 					</div>
@@ -75,12 +75,16 @@ const Cart = () => {
 					{cart.map((item) => (
 						<div
 							key={item.id}
-							className="border-2 rounded-sm border-zinc-100  flex items-center  hover:scale-101 hover:shadow-xs duration-200 cursor-default"
+							className="border-2 rounded-sm border-zinc-100 flex gap-3 justify-between items-center  hover:scale-101 hover:shadow-xs duration-200 cursor-default"
 						>
-							<div className="flex  w-3/5 justify-between py-3 pl-3">
-								<div className="flex gap-3">
+							<div className="flex  md:w-3/5 justify-between py-3 pl-3 w-full ">
+								<div className="flex md:gap-3 gap-1 items-center">
 									<div
-										className={"h-15 w-15 bg-cover bg-center rounded-sm "}
+										className={`w-[60px] h-[60px] flex-shrink-0 bg-cover bg-center rounded-sm md:border-0 border-2 ${
+											item.choice === "Veg"
+												? "border-green-600"
+												: "border-red-600"
+										}`}
 										style={{
 											backgroundImage: `url(${item.imageLink})`,
 										}}
@@ -88,7 +92,7 @@ const Cart = () => {
 									<div className="flex flex-col gap-2 ">
 										<h1>{item.title}</h1>
 										<div
-											className={`text-xs py-1 px-2 rounded-md text-white font-bold w-fit ${
+											className={`text-xs py-1 px-2 rounded-md text-white font-bold w-fit hidden md:flex ${
 												item.choice === "Veg" ? "bg-green-600" : "bg-red-600"
 											}`}
 										>
@@ -96,7 +100,7 @@ const Cart = () => {
 										</div>
 									</div>
 								</div>
-								<div className="flex gap-5 justify-center items-center">
+								<div className="flex md:gap-5 gap-2 justify-center items-center">
 									<button
 										onClick={() => handleRemove(item)}
 										type="button"
@@ -116,15 +120,15 @@ const Cart = () => {
 									</button>
 								</div>
 							</div>
-							<div className="w-2/5 flex justify-between items-center">
-								<div className="flex gap-3 justify-around w-4/5 pr-3">
-									<div>{item.price}</div>
+							<div className="md:w-2/5 flex justify-between items-center pr-3 gap-4  lg:p-0">
+								<div className="flex justify-around w-4/5 lg:pr-3">
+									<div className="hidden md:flex">{item.price}</div>
 									<div>{item.price * item.quantity}</div>
 								</div>
 								<button
 									type="button"
 									onClick={() => handleCartRemove(item)}
-									className="text-3xl flex justify-center items-center  hover:bg-[#F72E41] hover:text-white hover:cursor-pointer w-1/5 h-21 rounded-r-sm duration-200 "
+									className="text-2xl lg:text-3xl flex justify-center items-center  hover:bg-[#F72E41] hover:text-white hover:cursor-pointer w-1/5 h-21 rounded-r-sm duration-200 "
 								>
 									<i className="ri-delete-bin-line" />
 								</button>
@@ -133,18 +137,18 @@ const Cart = () => {
 					))}
 				</div>
 			</div>
-			<div className="w-1/3 h-fit mt-17 mx-20 p-5 border-2 border-zinc-100 sticky top-40 rounded-sm flex flex-col gap-5">
-				<div className="text-3xl  ">Order Summery</div>
-				<div className="flex flex-col gap-3 ">
-					<div className="flex justify-between  text-xl">
+			<div className="lg:w-1/3 h-fit lg:mx-20 lg:mt-12  lg:p-5 p-3 border-2 border-zinc-100 lg:sticky lg:top-50 rounded-sm flex flex-col lg:gap-5 gap-3">
+				<div className="lg:text-3xl text-2xl  ">Order Summery</div>
+				<div className="flex flex-col gap-2 ">
+					<div className="flex justify-between  lg:text-xl">
 						<h1 className=" ">Subtotal</h1>
 						<strong>₹ {subTotal?.toFixed(2)}</strong>
 					</div>
-					<div className="flex justify-between  text-xl">
+					<div className="flex justify-between  lg:text-xl">
 						<h1 className=" ">Estimated tax</h1>
 						<strong>₹ {tax?.toFixed(2)}</strong>
 					</div>
-					<div className="flex justify-between text-xl">
+					<div className="flex justify-between lg:text-xl">
 						<h1 className=" ">Delivery & handling fees</h1>
 						<strong>₹ {subTotal > 0 ? handlingFee?.toFixed(2) : 0}</strong>
 					</div>
@@ -165,7 +169,7 @@ const Cart = () => {
 					<p className="font-light text-sm text-center">
 						Available payment options
 					</p>
-					<div className="flex items-center scale-150 justify-center">
+					<div className="flex items-center md:scale-150 scale-110 justify-center">
 						<img
 							src={gpay}
 							alt="Google Pay"
@@ -182,7 +186,7 @@ const Cart = () => {
 							className="h-10 w-16 object-contain scale-80"
 						/>
 					</div>
-				</div>{" "}
+				</div>
 			</div>
 		</div>
 	);

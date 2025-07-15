@@ -18,7 +18,7 @@ const Menu = () => {
 		toast.success(`${currentItem.title} added to cart`);
 	};
 	return (
-		<div className="flex gap-5 flex-wrap  px-30">
+		<div className="flex gap-5 flex-wrap md:px-15 sm:px-5 lg:px-30">
 			{items?.map((item) => {
 				const hasImage = !!item.imageLink;
 				const fallbackImage =
